@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" id="liczba"><br>
+    <input type="button" value="Rysuj" onclick="elo()"><br>
+    <pre id="wynik"></pre>
+
+    <script>
+        function elo() {
+            let wyraz = "";
+            let a = parseInt(document.getElementById('liczba').value);
+            let przekatna1 = 0;
+            let przekatna2 = a - 1;
+            for (let i = 0; i < a; i++) {
+                for (let j = 0; j < a; j++) {
+
+                    if (j == 0 || j == a - 1 || i == 0 || i == a - 1) {
+                        wyraz += "* ";
+
+                    }
+                    else if (j == przekatna1) {
+                        wyraz += "* ";
+
+                    }
+                    else if (j == przekatna2) {
+                        wyraz += "* "
+                    }
+                    else {
+                        wyraz += "  "; // Dodanie dwóch odstępów (pusta przestrzeń)
+                    }
+                }
+                przekatna1 += 1;
+                przekatna2 -= 1;
+                wyraz += "\n"; // Nowy wiersz po zakończeniu każdego wiersza
+            }
+
+            document.getElementById('wynik').innerText = wyraz; // Wyświetlenie wyniku
+        }
+    </script>
+</body>
+
+</html>
